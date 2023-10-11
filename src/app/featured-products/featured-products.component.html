@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <h2 class="text-center mt-5">Search...</h2>
+    <!-- ^ Real Time Search ^ -->
+    <input type="text" placeholder="search here"
+      class="form-control text-black mx-auto border-2 border-black rounded-2 mb-5" [(ngModel)]="searchKey">
+    <div class="col-md-3" *ngFor="let product of allProduct | search:searchKey">
+      <!-- kda el value of input ht8yr value of searchKey property w ysm3 fe options el pipe  -->
+
+      <!-- input -> product el element l ana b3ml loop 3leh -->
+      <app-product-item [product]="product"></app-product-item>
+    </div>
+  </div>
+</div>

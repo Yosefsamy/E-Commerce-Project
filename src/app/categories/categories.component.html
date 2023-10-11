@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let category of allCategories">
+      <a class="myAnchor" [routerLink]="['/categoryDetails',category._id]">
+
+      <div class="item py-2">
+        <img class="img-fluid mb-2" [src]="category.image" height="300" alt="category-product">
+        <p class="text-main text-center mt-2 fs-4">{{category.name}}</p>
+      </div>
+
+    </a>
+  </div>
+</div>

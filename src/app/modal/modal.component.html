@@ -1,0 +1,18 @@
+<mat-dialog-content class="mat-typography py-5 position-relative">
+  <i mat-button mat-dialog-close class="fa-solid fa-xmark position-absolute end-0 top-0 cursor-pointer m-2"></i>
+  <div class="row align-items-center addBorder">
+    <div class="col-md-6">
+      <h1 class="text-main fw-bold ms-2 mb-0">{{data.name}}</h1>
+      <p>{{data.slug}}</p>
+    </div>
+
+    <div class="col-md-6">
+      <img [src]="data.image" class="w-100" alt="brand-image">
+    </div>
+
+  </div>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btn btn-danger text-white shadow-none">Close</button>
+</mat-dialog-actions>

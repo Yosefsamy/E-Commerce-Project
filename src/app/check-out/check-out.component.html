@@ -1,0 +1,62 @@
+<div class="w-50 mx-auto">
+  <form [formGroup]="shippingAddress">
+
+    <label for="details">Details</label>
+    <input type="text" id="details" formControlName="details" class="form-control mb-2">
+
+    <!-- ! Appear in case there are errors and in case touched the name input -->
+    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+    <div *ngIf="shippingAddress.get('details')?.errors && ( shippingAddress.get('details')?.touched || notValidForm)" class="alert alert-danger">
+      <!-- ~ shippingAddress.get('details')?.value === when write any letter in input this appear because value = true ~ -->
+
+      <!-- & Appear in case required -->
+      <p class="mb-0" *ngIf="shippingAddress.get('details')?.getError('required')">Details Is Required</p>
+
+    </div>
+
+
+    <label for="phone">Phone</label>
+    <input type="tel" id="phone" formControlName="phone" class="form-control mb-2">
+
+    <!-- ! Appear in case there are errors and in case touched the name input -->
+    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+    <div *ngIf="shippingAddress.get('phone')?.errors && ( shippingAddress.get('phone')?.touched || notValidForm)" class="alert alert-danger">
+      <!-- ~ shippingAddress.get('phone')?.value === when write any letter in input this appear because value = true ~ -->
+
+      <!-- & Appear in case required -->
+      <p class="mb-0" *ngIf="shippingAddress.get('phone')?.getError('required')">Phone Is Required</p>
+
+      <!-- & Appear in case not match phone pattern -->
+      <p class="mb-0" *ngIf="shippingAddress.get('phone')?.getError('pattern')">Phone Is InValid</p>
+    </div>
+
+
+    <label for="city">City</label>
+    <input type="text" id="city" formControlName="city" class="form-control mb-2">
+
+
+    <!-- ! Appear in case there are errors and in case touched the name input -->
+    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+    <div *ngIf="shippingAddress.get('city')?.errors && ( shippingAddress.get('city')?.touched || notValidForm)" class="alert alert-danger">
+      <!-- ~ shippingAddress.get('city')?.value === when write any letter in input this appear because value = true ~ -->
+
+      <!-- & Appear in case required -->
+      <p class="mb-0" *ngIf="shippingAddress.get('city')?.getError('required')">City Is Required</p>
+
+    </div>
+
+    <div class="d-flex justify-content-between mt-3">
+      <button class="px-sm-5" type="submit" class="btn btn-outline-info w-25" (click)="handleOnlinePayment(shippingAddress)">
+        <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i> <!-- ~ !isLoading == isLoading = false -->
+        <span *ngIf="!isLoading">Pay Online</span>
+      </button>
+
+      <button class="px-sm-5" type="submit" class="btn btn-outline-danger w-25" (click)="handleCashPayment(shippingAddress)">
+        <i *ngIf="isLoading" class="fa fa-spinner fa-spin"></i> <!-- ~ !loading == loading = false -->
+        <span *ngIf="!isLoading">Pay Cash</span>
+      </button>
+    </div>
+
+  </form>
+</div>
+

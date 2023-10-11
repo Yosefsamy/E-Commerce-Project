@@ -1,0 +1,36 @@
+<div class="product px-2 py-4">
+  <!-- ! Add Anchor to click on it and add [router link] ! -->
+  <a class="myAnchor" [routerLink]="['/productDetails',product.id]">
+    <!--productDetails/6428ead5dc1175abc65ca0ad -->
+    <img [src]="product.imageCover" class="w-100" alt>
+    <p class="text-main">{{product.category.name}}</p>
+    <h2 class="h6">{{product.title | trim:2}}</h2>         <!-- ! trim -> custom pipe ! -->
+
+    <div class="d-flex justify-content-between align-items-center">
+
+      <span>{{product.price}} EGP</span>
+
+      <div class="rating">
+        <i class="fa fa-star rating-color"></i>
+        <span>{{product.ratingsAverage}}</span>
+      </div>
+
+    </div>
+  </a>
+  <div class="d-flex justify-content-between align-items-center">
+    <button class="btn bg-main text-white d-block w-100"
+      (click)="addProductToCart(product.id)">+ Add</button>
+
+    <!-- & lw m4 fav & -->
+    <i *ngIf="!wishListData.includes($any(product.id))"
+      class="fa-regular fa-heart fs-4 cursor-pointer"
+      (click)="addProductToWishlist(product.id)"></i>
+
+    <!-- & lw fav & -->
+    <i *ngIf="wishListData.includes($any(product.id))"
+      class="fa-solid fa-heart fs-4 cursor-pointer text-danger"
+      (click)="deleteProductFromWishlist(product.id)"></i>
+
+  </div>
+
+</div>

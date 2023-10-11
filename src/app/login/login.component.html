@@ -1,0 +1,58 @@
+<div class="container my-5">
+  <h2 class="text-center">Login Now:</h2>
+
+  <!-- ^ Appear in case there are API errors == apiError=true ^ -->
+  <div *ngIf="apiError" class="alert alert-danger">
+    {{apiError}}
+  </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+
+    <label for="email">Email: </label>
+    <input type="email" id="email" formControlName="email" class="form-control mb-2">
+
+    <!-- ! Appear in case there are errors and in case touched the email input -->
+    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+    <div *ngIf="loginForm.get('email')?.errors && (loginForm.get('email')?.touched || isNotValidForm)" class="alert alert-danger">
+
+      <!-- & Appear in case required -->
+      <p class="mb-0" *ngIf="loginForm.get('email')?.getError('required')">Email Is Required</p>
+
+      <!-- & Appear in case not match email pattern -->
+      <p class="mb-0" *ngIf="loginForm.get('email')?.getError('email')">Email Is InValid</p>
+
+    </div>
+
+
+    <label for="password">Password: </label>
+    <input type="password" id="password" formControlName="password" class="form-control mb-2">
+
+    <!-- ! Appear in case there are errors and in case touched the password input -->
+    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+    <div *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched || isNotValidForm)" class="alert alert-danger">
+
+      <!-- & Appear in case required -->
+      <p class="mb-0" *ngIf="loginForm.get('password')?.getError('required')">Password Is Required</p>
+
+      <!-- & Appear in case not match password pattern -->
+      <p class="mb-0" *ngIf="loginForm.get('password')?.getError('pattern')">Password Is InValid</p>
+
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mt-3">
+
+      <a class="myAnchor fs-5" [routerLink]="'/forgetPassword'">forget your password ?</a>
+
+    <!-- & [disabled]="loginForm.invalid" === disabled = true -> inValid form / disabled = false -> valid form -->
+    <!-- [disabled]="loginForm.invalid" -->
+    <button type="submit" class="btn bg-main text-white ms-auto d-block">
+      <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+      <span *ngIf="!loading">Login</span>  <!-- ~ !loading == loading = false -->
+
+    </button>
+
+  </div>
+
+
+  </form>
+</div>

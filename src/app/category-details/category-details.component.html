@@ -1,0 +1,23 @@
+<h2 class="my-3 mx-2 fw-bolder text-center" *ngIf="this.categoryDetails.length>0">All SubCategories On This Category :</h2>
+<h2 class="my-3 mx-2 fw-bolder text-center" *ngIf="this.categoryDetails.length==0">No SubCategories On This Category :</h2>
+
+<div class="container mt-3">
+  <div class="row g-5">
+    <div class="col-md-4" *ngFor="let category of categoryDetails">
+      <div class="item my-2">
+        <p class="fw-bold fs-4 text-main">{{category.name | trim:4}}</p>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+
+
+
+</div>

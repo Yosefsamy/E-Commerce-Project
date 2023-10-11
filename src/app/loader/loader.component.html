@@ -1,0 +1,11 @@
+<!-- loader.component.html -->
+
+<div *ngIf="isLoading | async" class="overlay">
+  <mat-progress-spinner class="spinner"
+                        mode="indeterminate">
+  </mat-progress-spinner>
+</div>
+
+<!-- async == * It subscribes to an observable or a promise and returns the last emitted value.
+* Whenever a new value is emitted, it marks the component to be checked. That means Angular will run Change Detector for that component in the next cycle.
+* It unsubscribes from the observable when the component gets destroyed. -->

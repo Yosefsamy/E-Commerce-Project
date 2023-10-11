@@ -1,0 +1,32 @@
+<div class="container my-5">
+  <h2 class="text-center my-3">Please Enter The Code</h2>
+
+    <!-- ^ Appear in case there are API errors == errorMessage=true => contain value ^ -->
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{errorMessage}}
+    </div>
+
+  <form [formGroup]="resetCodeForm" (ngSubmit)="verifyCode(resetCodeForm)">
+
+    <div class="form-floating mb-3">
+      <input type="text" class="form-control" id="floatingInput" formControlName="resetCode" placeholder="Code">
+      <label for="floatingInput">Code</label>
+    </div>
+
+     <!-- ! Appear in case there are errors and in case touched the code input -->
+    <!-- ! Appear in case there are errors and in case submit the form and it is in valid -->
+    <div *ngIf="resetCodeForm.get('resetCode')?.errors && (resetCodeForm.get('resetCode')?.touched || isNotValidForm)" class="alert alert-danger">
+
+      <!-- & Appear in case required -->
+      <p class="mb-0" *ngIf="resetCodeForm.get('resetCode')?.getError('required')">Reset Code Is Required</p>
+
+      <!-- & Appear in case not match email pattern -->
+      <p class="mb-0" *ngIf="resetCodeForm.get('resetCode')?.getError('maxlength')">Reset Code MaxLength is 6</p>
+
+    </div>
+
+
+    <button class="btn btn-outline-success">Verify</button>
+  </form>
+</div>
+

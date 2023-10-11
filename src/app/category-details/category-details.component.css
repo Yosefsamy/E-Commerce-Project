@@ -1,0 +1,10 @@
+.item{
+  border: 1px solid black;
+  padding: 16px;
+  text-align: center;
+  transition: all 0.5s;
+}
+
+.item:hover{
+  box-shadow: 1px 1px 10px #4fa74f;
+}

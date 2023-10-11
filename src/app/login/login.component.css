@@ -1,0 +1,10 @@
+
+.myAnchor{
+  padding-block: 6px;
+  padding-inline: 12px;
+  transition: all 0.4s;
+}
+
+.myAnchor:hover{
+  color: var(--main-color);
+}
